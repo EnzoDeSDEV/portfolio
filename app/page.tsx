@@ -108,8 +108,14 @@ export default function Home() {
       {/* NAVIGATION */}
       <header className="sticky top-0 z-50 border-b border-white/10 bg-[#0b1120]/95 backdrop-blur">
         <nav className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-4 sm:px-8 lg:px-6">
-          <a href="#home" className="shrink-0 text-xl font-bold">
-            Enzo<span className="text-cyan-400">.</span>
+          <a
+            href="#home"
+            aria-label="Enzo De Sousa - Retour à l'accueil"
+            className="shrink-0 font-mono text-xl font-bold tracking-tight sm:text-2xl"
+          >
+            <span className="text-cyan-400">{"<"}</span>
+            <span className="text-white">EnzoDeSousa</span>
+            <span className="text-cyan-400">{"/>"}</span>
           </a>
 
           <div className="flex items-center gap-4 text-xs text-slate-300 sm:gap-7 sm:text-sm">
@@ -208,7 +214,7 @@ export default function Home() {
 
             <div className="mt-7 flex justify-center gap-6 text-sm text-slate-400 lg:justify-start">
               <a
-                href="https://www.linkedin.com/in/enzo-de-sousa-21a020255/"
+                href="https://www.linkedin.com/in/enzo-de-sousa/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="transition hover:text-cyan-400"
@@ -287,7 +293,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* COMPÉTENCES AVEC LOGOS */}
+      {/* COMPÉTENCES */}
       <section
         id="skills"
         className="scroll-mt-20 py-14 sm:py-20 lg:py-24"
@@ -321,7 +327,6 @@ export default function Home() {
                           style={{ color: item.color }}
                           aria-hidden="true"
                         />
-
                         <span className="text-xs font-medium leading-5 text-slate-300 sm:text-sm">
                           {item.name}
                         </span>
@@ -353,7 +358,6 @@ export default function Home() {
             <h3 className="mb-2 text-xl font-bold sm:text-2xl">
               Développeur Web Front-end
             </h3>
-
             <p className="mb-6 text-base text-slate-300 sm:text-lg">
               Groupe Rossel / La Voix du Nord
             </p>
@@ -409,7 +413,7 @@ export default function Home() {
                 key={project.number}
                 className="group flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#111a2e] transition-all duration-300 hover:border-cyan-400/50 hover:shadow-xl hover:shadow-cyan-400/5 lg:hover:-translate-y-1"
               >
-                {/* CAPTURE DU PROJET */}
+                {/* IMAGE */}
                 <a
                   href={project.image}
                   target="_blank"
@@ -428,7 +432,6 @@ export default function Home() {
                   <span className="absolute bottom-3 left-3 rounded-md bg-[#0b1120]/95 px-3 py-1.5 text-xs font-semibold text-cyan-400">
                     {project.brand}
                   </span>
-
                   <span className="absolute bottom-3 right-3 rounded-md bg-[#0b1120]/90 px-3 py-1.5 text-xs text-white opacity-0 transition-opacity group-hover:opacity-100">
                     Agrandir ↗
                   </span>
@@ -465,7 +468,6 @@ export default function Home() {
                               aria-hidden="true"
                             />
                           )}
-
                           {tag.name}
                         </span>
                       );
@@ -482,7 +484,6 @@ export default function Home() {
                     >
                       Découvrir le site ↗
                     </a>
-
                     <a
                       href={project.image}
                       target="_blank"
