@@ -1,56 +1,110 @@
 
 import Image from "next/image";
 
+import {
+  SiReact,
+  SiNextdotjs,
+  SiTypescript,
+  SiJavascript,
+  SiHtml5,
+  SiCss,
+  SiTailwindcss,
+  SiPhp,
+  SiDrupal,
+  SiSymfony,
+  SiGo,
+  SiGit,
+  SiGitlab,
+  SiDocker,
+} from "react-icons/si";
+
+import { FaUsers } from "react-icons/fa";
+import { VscAzureDevops } from "react-icons/vsc";
+
+// COMPÉTENCES
 const skills = [
   {
     category: "Front-end",
     items: [
-      "React", "Next.js", "TypeScript", "JavaScript",
-      "HTML", "CSS", "Tailwind CSS",
+      { name: "React", icon: SiReact, color: "#61DAFB" },
+      { name: "Next.js", icon: SiNextdotjs, color: "#FFFFFF" },
+      { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
+      { name: "JavaScript", icon: SiJavascript, color: "#F7DF1E" },
+      { name: "HTML", icon: SiHtml5, color: "#E34F26" },
+      { name: "CSS", icon: SiCss, color: "#663399" },
+      { name: "Tailwind CSS", icon: SiTailwindcss, color: "#06B6D4" },
     ],
   },
   {
     category: "Back-end",
     items: [
-      "PHP", "Drupal", "Notions de Symfony", "Notions de Go",
+      { name: "PHP", icon: SiPhp, color: "#777BB4" },
+      { name: "Drupal", icon: SiDrupal, color: "#0678BE" },
+      { name: "Notions de Symfony", icon: SiSymfony, color: "#FFFFFF" },
+      { name: "Notions de Go", icon: SiGo, color: "#00ADD8" },
     ],
   },
   {
     category: "Outils & méthodes",
     items: [
-      "Git", "GitLab", "Azure DevOps", "Docker", "Scrum",
+      { name: "Git", icon: SiGit, color: "#F05032" },
+      { name: "GitLab", icon: SiGitlab, color: "#FC6D26" },
+      { name: "Azure DevOps", icon: VscAzureDevops, color: "#0078D7" },
+      { name: "Docker", icon: SiDocker, color: "#2496ED" },
+      { name: "Scrum", icon: FaUsers, color: "#22D3EE" },
     ],
   },
 ];
 
+// PROJETS PROFESSIONNELS
 const projects = [
   {
     number: "01",
     title: "SSO — Authentification",
+    brand: "La Voix du Nord",
+    image: "/projects/sso.png",
     description:
-      "Contribution aux parcours de connexion et d'inscription des utilisateurs pour différentes marques du Groupe Rossel.",
-    tags: ["React", "Next.js", "JavaScript"],
+      "Participation au développement et à la maintenance du système d'authentification Rossel Connect, utilisé par plusieurs marques du Groupe Rossel. Contribution aux parcours de connexion et d'inscription, à l'intégration des interfaces et à la correction d'anomalies.",
+    tags: [
+      { name: "React", icon: SiReact, color: "#61DAFB" },
+      { name: "Next.js", icon: SiNextdotjs, color: "#FFFFFF" },
+      { name: "JavaScript", icon: SiJavascript, color: "#F7DF1E" },
+    ],
+    link: "https://www.lavoixdunord.fr/",
   },
   {
     number: "02",
     title: "GPG — Gestion du profil",
+    brand: "Le Soir",
+    image: "/projects/gpg.png",
     description:
-      "Développement et maintenance de fonctionnalités liées à la gestion des comptes et des informations utilisateurs.",
-    tags: ["Front-end", "API", "B2C"],
+      "Développement et maintenance des interfaces de gestion des comptes utilisateurs : consultation et modification des informations personnelles, gestion des préférences et intégration des API. Participation aux évolutions fonctionnelles et à la résolution des anomalies.",
+    tags: [
+      { name: "React", icon: SiReact, color: "#61DAFB" },
+      { name: "API", icon: null, color: null },
+      { name: "Gestion de compte", icon: null, color: null },
+    ],
+    link: "https://www.lesoir.be/",
   },
   {
     number: "03",
-    title: "PCG — Parcours clients",
+    title: "PCG — Parcours d'abonnement",
+    brand: "Sudinfo",
+    image: "/projects/pcg.png",
     description:
-      "Contribution aux parcours numériques d'abonnement, à la correction d'anomalies et aux évolutions fonctionnelles.",
-    tags: ["Drupal", "PHP", "B2C"],
+      "Contribution au développement et à la maintenance des parcours d'abonnement numériques. Travail sur les interfaces de présentation des offres, les évolutions fonctionnelles et les corrections afin d'améliorer l'expérience de souscription des utilisateurs.",
+    tags: [
+      { name: "Drupal", icon: SiDrupal, color: "#0678BE" },
+      { name: "PHP", icon: SiPhp, color: "#777BB4" },
+      { name: "B2C", icon: null, color: null },
+    ],
+    link: "https://www.sudinfo.be/",
   },
 ];
 
 export default function Home() {
   return (
     <main className="min-h-screen overflow-x-hidden bg-[#0b1120] text-slate-100">
-
       {/* NAVIGATION */}
       <header className="sticky top-0 z-50 border-b border-white/10 bg-[#0b1120]/95 backdrop-blur">
         <nav className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-4 sm:px-8 lg:px-6">
@@ -65,18 +119,21 @@ export default function Home() {
             >
               À propos
             </a>
+
             <a
               href="#skills"
               className="hidden transition hover:text-cyan-400 md:block"
             >
               Compétences
             </a>
+
             <a
               href="#projects"
               className="transition hover:text-cyan-400"
             >
               Projets
             </a>
+
             <a
               href="#contact"
               className="rounded-md border border-cyan-400 px-3 py-2 text-cyan-400 transition hover:bg-cyan-400/10"
@@ -93,7 +150,6 @@ export default function Home() {
         className="mx-auto flex min-h-[calc(100svh-72px)] max-w-6xl scroll-mt-20 items-center px-5 py-12 sm:px-8 sm:py-16 lg:px-6 lg:py-20"
       >
         <div className="grid w-full items-center gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:gap-16">
-
           {/* PHOTO */}
           <div className="order-1 flex justify-center lg:order-2 lg:justify-end">
             <div className="relative w-44 sm:w-56 lg:w-full lg:max-w-sm">
@@ -101,7 +157,7 @@ export default function Home() {
 
               <Image
                 src="/photo-enzo.png"
-                alt="Enzo De Sousa"
+                alt="Photo de profil d'Enzo De Sousa"
                 width={420}
                 height={420}
                 priority
@@ -231,7 +287,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* COMPÉTENCES */}
+      {/* COMPÉTENCES AVEC LOGOS */}
       <section
         id="skills"
         className="scroll-mt-20 py-14 sm:py-20 lg:py-24"
@@ -247,19 +303,31 @@ export default function Home() {
                 key={skill.category}
                 className="rounded-xl border border-white/10 bg-[#111a2e] p-5 transition hover:border-cyan-400/50 sm:p-7"
               >
-                <h3 className="mb-5 text-lg font-semibold sm:text-xl">
+                <h3 className="mb-6 text-lg font-semibold sm:text-xl">
                   {skill.category}
                 </h3>
 
-                <div className="flex flex-wrap gap-2">
-                  {skill.items.map((item) => (
-                    <span
-                      key={item}
-                      className="rounded-md bg-cyan-400/10 px-3 py-2 text-xs text-cyan-300 sm:text-sm"
-                    >
-                      {item}
-                    </span>
-                  ))}
+                <div className="grid grid-cols-2 gap-3">
+                  {skill.items.map((item) => {
+                    const Icon = item.icon;
+
+                    return (
+                      <div
+                        key={item.name}
+                        className="flex min-w-0 flex-col items-center justify-center gap-3 rounded-xl border border-white/10 bg-[#0b1120] p-3 text-center transition hover:-translate-y-1 hover:border-cyan-400/50 sm:p-4"
+                      >
+                        <Icon
+                          size={32}
+                          style={{ color: item.color }}
+                          aria-hidden="true"
+                        />
+
+                        <span className="text-xs font-medium leading-5 text-slate-300 sm:text-sm">
+                          {item.name}
+                        </span>
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
             ))}
@@ -317,7 +385,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* PROJETS */}
+      {/* PROJETS AVEC CAPTURES ET LOGOS */}
       <section
         id="projects"
         className="scroll-mt-20 py-14 sm:py-20 lg:py-24"
@@ -327,45 +395,114 @@ export default function Home() {
             <span className="text-cyan-400">04.</span> Projets
           </h2>
 
-          <p className="mb-8 text-sm text-slate-400 sm:mb-10 sm:text-base">
-            Quelques projets professionnels auxquels j&apos;ai contribué.
+          <p className="mb-10 max-w-3xl text-sm leading-7 text-slate-400 sm:text-base">
+            Découvrez trois projets professionnels auxquels j&apos;ai
+            contribué durant mon alternance au sein du Groupe Rossel.
+            Ces applications accompagnent les utilisateurs dans
+            leurs parcours de connexion, de gestion de compte
+            et d&apos;abonnement numérique.
           </p>
 
-          <div className="grid gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {projects.map((project) => (
               <article
                 key={project.number}
-                className="flex flex-col rounded-xl border border-white/10 bg-[#111a2e] p-5 transition hover:border-cyan-400/50 sm:p-7 lg:hover:-translate-y-1"
+                className="group flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#111a2e] transition-all duration-300 hover:border-cyan-400/50 hover:shadow-xl hover:shadow-cyan-400/5 lg:hover:-translate-y-1"
               >
-                <p className="mb-6 text-sm font-bold text-cyan-400 sm:mb-8">
-                  {project.number} / PROJET
-                </p>
+                {/* CAPTURE DU PROJET */}
+                <a
+                  href={project.image}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Voir la capture du projet ${project.title}`}
+                  className="relative block aspect-video overflow-hidden bg-[#e8edf3]"
+                >
+                  <Image
+                    src={project.image}
+                    alt={`Interface du projet ${project.title} — ${project.brand}`}
+                    fill
+                    sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 33vw"
+                    className="object-contain transition-transform duration-500 group-hover:scale-[1.04]"
+                  />
 
-                <h3 className="mb-4 text-lg font-bold sm:text-xl">
-                  {project.title}
-                </h3>
+                  <span className="absolute bottom-3 left-3 rounded-md bg-[#0b1120]/95 px-3 py-1.5 text-xs font-semibold text-cyan-400">
+                    {project.brand}
+                  </span>
 
-                <p className="mb-7 flex-1 text-sm leading-7 text-slate-400 sm:text-base">
-                  {project.description}
-                </p>
+                  <span className="absolute bottom-3 right-3 rounded-md bg-[#0b1120]/90 px-3 py-1.5 text-xs text-white opacity-0 transition-opacity group-hover:opacity-100">
+                    Agrandir ↗
+                  </span>
+                </a>
 
-                <div className="flex flex-wrap gap-2">
-                  {project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="rounded-md border border-white/10 px-3 py-1 text-xs text-slate-300"
+                {/* DESCRIPTION */}
+                <div className="flex flex-1 flex-col p-5 sm:p-6">
+                  <p className="mb-3 text-xs font-bold tracking-widest text-cyan-400">
+                    {project.number} / PROJET PROFESSIONNEL
+                  </p>
+
+                  <h3 className="mb-4 text-xl font-bold leading-snug text-white">
+                    {project.title}
+                  </h3>
+
+                  <p className="mb-7 flex-1 text-sm leading-7 text-slate-400">
+                    {project.description}
+                  </p>
+
+                  {/* TAGS AVEC LOGOS */}
+                  <div className="mb-6 flex flex-wrap gap-2">
+                    {project.tags.map((tag) => {
+                      const Icon = tag.icon;
+
+                      return (
+                        <span
+                          key={tag.name}
+                          className="inline-flex items-center gap-2 rounded-md border border-white/10 bg-[#0b1120] px-3 py-2 text-xs text-slate-300 transition-colors hover:border-cyan-400/40"
+                        >
+                          {Icon && (
+                            <Icon
+                              size={17}
+                              style={{ color: tag.color ?? undefined }}
+                              aria-hidden="true"
+                            />
+                          )}
+
+                          {tag.name}
+                        </span>
+                      );
+                    })}
+                  </div>
+
+                  {/* LIENS */}
+                  <div className="flex flex-wrap items-center justify-between gap-3 border-t border-white/10 pt-5">
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm font-semibold text-cyan-400 transition-colors hover:text-cyan-300"
                     >
-                      {tag}
-                    </span>
-                  ))}
+                      Découvrir le site ↗
+                    </a>
+
+                    <a
+                      href={project.image}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xs text-slate-400 transition-colors hover:text-white"
+                    >
+                      Voir la capture ↗
+                    </a>
+                  </div>
                 </div>
               </article>
             ))}
           </div>
 
-          <p className="mt-6 text-xs leading-6 text-slate-500 sm:text-sm">
-            Projets réalisés dans un contexte professionnel ;
-            les dépôts sources ne sont pas publics.
+          <p className="mt-8 max-w-4xl text-xs leading-6 text-slate-500">
+            Captures d&apos;interfaces illustrant les projets
+            auxquels j&apos;ai contribué dans le cadre de mon alternance.
+            Les développements ont été réalisés en collaboration
+            avec les équipes techniques du Groupe Rossel.
+            Les dépôts de code source ne sont pas publics.
           </p>
         </div>
       </section>
